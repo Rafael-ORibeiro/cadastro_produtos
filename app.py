@@ -24,7 +24,7 @@ def retornarDados(resp):
 
 @app.route('/',methods=['GET'])
 
-def getProdutos():
+def getStart():
     
     return {'message':'Api(CRUD) para matéria Projeto Front-end para Soluções Sociais. 5ºPeríodo UNIFAA - ADS'}
 
