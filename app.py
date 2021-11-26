@@ -22,6 +22,13 @@ def retornarDados(resp):
         jsonResposta.append({"produto":dados["produto"],"quantidade":dados["quantidade"]})
     return {"result": jsonResposta}
 
+@app.route('/',methods=['GET'])
+
+def getProdutos():
+    
+    return {'message':'Api(CRUD) para matéria Projeto Front-end para Soluções Sociais. 5ºPeríodo UNIFAA - ADS'}
+
+
 @app.route('/produtos',methods=['GET'])
 
 def getProdutos():
