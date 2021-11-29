@@ -5,11 +5,13 @@ from flask_pymongo import PyMongo
 from bson import json_util
 from bson.json_util import dumps
 import os
+from flask_cors import CORS
 
 
     
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.config['MONGO_URI'] = ""
 
