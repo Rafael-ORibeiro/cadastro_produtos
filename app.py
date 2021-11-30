@@ -52,7 +52,7 @@ def postProdutos():
         
         mongo.db.produtos.insert_one(request.json[0])
         
-        return{"message":"SUCESS"}
+        return{"message":"Produto cadastrado com sucesso!"}
     
     return{"message":"Produto já cadastrado"}
     
