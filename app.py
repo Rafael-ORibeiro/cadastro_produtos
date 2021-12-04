@@ -13,7 +13,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-app.config['MONGO_URI'] = ""
+app.config['MONGO_URI'] = "mongodb+srv://ror74559:12mm34@betcartoes.jbbi4.mongodb.net/campeonatos?retryWrites=true&w=majority"
 
 #collection produtos
 mongo = PyMongo(app)
