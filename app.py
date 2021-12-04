@@ -66,20 +66,26 @@ def updateProdutos():
     
     existeAntigoNome = dumps(mongo.db.produtos.find({"produto":request.json[0]["antigoNome"]}))
 
-    if existeNovoNome == "[]" and existeAntigoNome != "[]":
+    if existeAntigoNome != "[]": 
+        
+        condicao1 =  (existeAntigoNome == existeNovoNome and request.json[0]["antigaQuantidade"] != request.json[0]["novaQuantidade"])
+        
+        condicao2 =  (existeAntigoNome != existeNovoNome)
+        
+        if condicao1 or condicao2:
     
-        novo = {"$set": {"produto":request.json[0]["novoNome"],"quantidade":request.json[0]["novaQuantidade"]}}
-        
-        filtro ={"produto":request.json[0]["antigoNome"]}
-        try:
-            mongo.db.produtos.update(filtro,novo)
-            
-            return{"message":"Produto atualizado","novo Produto":{"produto":request.json[0]["novoNome"],"quantidade":request.json[0]["novaQuantidade"]}}
-        
-        except:
-            
-            return{"message":"Erro ao tentar atualizar produto"}
-        #response = Response(json_util.dumps(query_),mimetype='application/json')
+            novo = {"$set": {"produto":request.json[0]["novoNome"],"quantidade":request.json[0]["novaQuantidade"]}}
+
+            filtro ={"produto":request.json[0]["antigoNome"]}
+            try:
+                mongo.db.produtos.update(filtro,novo)
+
+                return{"message":"Produto atualizado","novo Produto":{"produto":request.json[0]["novoNome"],"quantidade":request.json[0]["novaQuantidade"]}}
+
+            except:
+
+                return{"message":"Erro ao tentar atualizar produto"}
+            #response = Response(json_util.dumps(query_),mimetype='application/json')
         
     return {"message":"Esse produto não existe ou o nome que será atualizado já existe!"}
 
